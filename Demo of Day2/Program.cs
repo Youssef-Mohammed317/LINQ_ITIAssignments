@@ -107,7 +107,6 @@
 
             #endregion
 
-
             #region First & Last
 
             Course? crs = SampleData.Courses.Where(c => c.Hours == 30)
@@ -185,7 +184,7 @@
             //var query =
             //    from c in SampleData.Courses
             //    group c by c.Subject.Name;
-                
+
             //foreach( var c in query)
             //{
             //    //Console.WriteLine($"Key:{c.Key} \t Total Hours:{c.Sum(c => c.Hours)}");
@@ -220,6 +219,23 @@
             //    }
             //    Console.WriteLine("-------------------");
             //}
+
+            #endregion
+
+            #region Casting
+
+            // method 1
+            //var query = SampleData.Courses.Cast<Course>().ToList();
+
+            //method 2
+            var query =
+                from Course c in SampleData.Courses
+                select c;
+
+            foreach (var course in query)
+            {
+                Console.WriteLine(course.Hours);
+            }
 
             #endregion
         }
